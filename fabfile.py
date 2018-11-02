@@ -10,31 +10,31 @@ from fabric.operations import sudo, run, put
 from fabric.tasks import execute
 from fabric.utils import abort
 
-env.host_one = ['123.207.32.167']
-env.host_remaining = env.host_user + env.host_service
-env.host_tmp = []
-env.host_all = env.host_one + env.host_remaining
+# env.host_one = ['123.207.32.167']
+# env.host_remaining = env.host_user + env.host_service
+# env.host_tmp = []
+# env.host_all = env.host_one + env.host_remaining
 
 env.host_test = ['123.207.32.167']
 
-env.build_command = 'distTar'
-env.build_dir = './build/distributions'
-env.release_dir = '/home/ubuntu/release'
-
-env.app_name = 'feijin'
-env.app_port = '9030'  # 慎重:修改端口,同时需要修改slb:a8_service_bet的端口映射
-env.app_status_cmd = 'curl http://localhost:9030/status'
-
-env.app_home = '/srv/java/%s' % env.app_name
-env.app_on_file = env.app_home + '/on'
-env.app_out = '/var/log/%s/%s.out.log' % (env.app_name, env.app_name)
-env.app_start_cmd = 'bin/%s %s' % (env.app_name, env.app_port)
-env.app_kill_cmd = "kill -9 $(ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}')" % env.app_name
-env.app_ps_cmd = "ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}'" % env.app_name
-
-env.stop_wait_time = 10
-env.status_check_interval = 5
-env.status_check_times = 60
+# env.build_command = 'distTar'
+# env.build_dir = './build/distributions'
+# env.release_dir = '/home/ubuntu/release'
+#
+# env.app_name = 'feijin'
+# env.app_port = '9030'  # 慎重:修改端口,同时需要修改slb:a8_service_bet的端口映射
+# env.app_status_cmd = 'curl http://localhost:9030/status'
+#
+# env.app_home = '/srv/java/%s' % env.app_name
+# env.app_on_file = env.app_home + '/on'
+# env.app_out = '/var/log/%s/%s.out.log' % (env.app_name, env.app_name)
+# env.app_start_cmd = 'bin/%s %s' % (env.app_name, env.app_port)
+# env.app_kill_cmd = "kill -9 $(ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}')" % env.app_name
+# env.app_ps_cmd = "ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}'" % env.app_name
+#
+# env.stop_wait_time = 10
+# env.status_check_interval = 5
+# env.status_check_times = 60
 
 
 # 中间变量
