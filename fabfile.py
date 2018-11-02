@@ -11,7 +11,7 @@ from fabric.tasks import execute
 from fabric.utils import abort
 
 env.host_one = ['123.207.32.167']
-env.host_remaining = env.host_user + env.host_service
+env.host_remaining = ['123.207.32.167']
 env.host_tmp = []
 env.host_all = env.host_one
 
