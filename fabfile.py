@@ -114,9 +114,9 @@ def all():
 
 
 def pull():
-    local('git checkout develop')
+    local('git checkout master')
     local('git reset --hard remotes/origin/master')
-    local('git pull origin develop')
+    local('git pull origin master')
 
 
 def build():
