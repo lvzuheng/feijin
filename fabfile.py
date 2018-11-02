@@ -10,10 +10,10 @@ from fabric.operations import sudo, run, put
 from fabric.tasks import execute
 from fabric.utils import abort
 
-# env.host_one = ['123.207.32.167']
-# env.host_remaining = env.host_user + env.host_service
-# env.host_tmp = []
-# env.host_all = env.host_one + env.host_remaining
+env.host_one = ['123.207.32.167']
+env.host_remaining = env.host_user + env.host_service
+env.host_tmp = []
+env.host_all = env.host_one
 
 env.host_test = ['123.207.32.167']
 
@@ -124,7 +124,6 @@ def build():
     env.build_file = local('ls ' + env.build_dir, capture=True)
 
 
-@hosts(env.host_all)
 def release():
     run('mkdir -p ' + env.release_dir)
     put(env.build_dir + '/*', env.release_dir)
