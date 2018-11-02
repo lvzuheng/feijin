@@ -17,7 +17,7 @@ env.host_all = env.host_one
 
 env.host_test = ['123.207.32.167']
 
-# env.build_command = 'distTar'
+env.build_command = 'distTar'
 # env.build_dir = './build/distributions'
 # env.release_dir = '/home/ubuntu/release'
 #
