@@ -55,7 +55,7 @@ def test():
 
 
 def pull_test():
-    local('git checkout dev_test')
+    local('git checkout master')
     local('git reset --hard remotes/origin/master')
     local('git pull origin master')
 
