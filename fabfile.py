@@ -15,7 +15,7 @@ env.host_remaining = ['123.207.32.167']
 env.host_tmp = []
 env.host_all = env.host_one
 
-env.host_test = ['123.207.32.167']
+env.host_test = ['127.0.0.1']
 
 env.build_command = 'distTar'
 env.build_dir = './build/distributions'
