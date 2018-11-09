@@ -19,7 +19,7 @@ env.host_test = ['127.0.0.1']
 
 env.build_command = 'distTar'
 env.build_dir = './build/distributions'
-env.release_dir = '/home/ubuntu/release'
+env.release_dir = '/home/ubuntu/develop/release'
 
 env.app_name = 'feijin'
 env.app_port = '9030'  # 慎重:修改端口,同时需要修改slb:a8_service_bet的端口映射
