@@ -53,7 +53,7 @@ def rnotify(msg=''):
 
 def test():
     execute(pull_test)
-    execute(build_test)
+    # execute(build_test)
     execute(release_test)
     execute(deploy_test)
 
