@@ -15,7 +15,7 @@ env.host_remaining = ['123.207.32.167']
 env.host_tmp = []
 env.host_all = env.host_one
 
-env.host_test = ['127.0.0.1']
+env.host_test = ['123.207.32.167']
 
 env.build_command = 'distTar'
 env.build_dir = './build/distributions'
@@ -31,6 +31,10 @@ env.app_out = '/var/log/%s/%s.out.log' % (env.app_name, env.app_name)
 env.app_start_cmd = 'bin/%s %s' % (env.app_name, env.app_port)
 env.app_kill_cmd = "kill -9 $(ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}')" % env.app_name
 env.app_ps_cmd = "ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}'" % env.app_name
+
+env.hosts = ['123.207.32.167']            # 指定 hosts 远程主机
+env.key_filename = '/root/.ssh/id_rsa'     # 指定你的私钥文件
+env.user = 'ubuntu'
 
 env.stop_wait_time = 10
 env.status_check_interval = 5
