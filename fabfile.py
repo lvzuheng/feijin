@@ -53,7 +53,7 @@ def rnotify(msg=''):
 
 def test():
     execute(pull_test)
-    execute(build_test)
+    # execute(build_test)
     execute(release_test)
     execute(deploy_test)
 
@@ -224,7 +224,7 @@ def offline(innerIps=''):
 def online(innerIps=''):
     if innerIps != '':
         slb_add(innerIps)
-    run('touch ' + env.app_on_file)
+        run('touch ' + env.app_on_file)
 
 
 def restart(zipfilename='', rollback=False):
