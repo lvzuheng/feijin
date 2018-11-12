@@ -64,6 +64,7 @@ def pull_test():
     local('git pull origin master')
 
 
+
 @hosts(env.host_test)
 def release_test():
     run('mkdir -p ' + env.release_dir)
