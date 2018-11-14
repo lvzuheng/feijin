@@ -23,7 +23,7 @@ env.release_dir = '/home/ubuntu/develop/release'
 
 env.app_name = 'feijin'
 env.app_port = '9030'  # 慎重:修改端口,同时需要修改slb:a8_service_bet的端口映射
-env.app_status_cmd = 'curl http://localhost:9030/status'
+env.app_status_cmd = 'curl http://localhost:9030/%s/status' % env.app_name
 
 env.app_home = '/srv/java/%s' % env.app_name
 env.app_on_file = env.app_home + '/on'
@@ -52,8 +52,8 @@ def rnotify(msg=''):
 
 
 def test():
-    # execute(pull_test)
-    # execute(build_test)
+    execute(pull_test)
+    execute(build_test)
     execute(release_test)
     execute(deploy_test)
 
