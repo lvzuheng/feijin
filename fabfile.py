@@ -1,6 +1,3 @@
-# encoding=utf-8
-
-import json
 import time
 
 from fabric.api import env, local, hosts
@@ -12,25 +9,29 @@ from fabric.utils import abort
 
 env.server_name = 'feijin'
 env.server_port = '9030'
-
+#远程服务器用户名
 env.user = "ubuntu"
+#远程服务器地址
 env.host_dev = ['123.207.32.167']
-
+#服务部署目录
 env.server_home= '/srv/java/%s'%env.server_name
+#服务日志输出目录
 env.server_log = '/var/log/%s'%env.server_name
-env.app_out = '%s/%s.out.log'%(env.server_log,env.server_name)
+#服务日志输出文件
+env.server_log_out = '%s/%s.out.log'%(env.server_log,env.server_name)
 #服务启动路径
 env.server_start = 'bin/%s' % env.server_name
-
-
+env.app_status_cmd = 'curl http://localhost:9030'
 #服务进程号查询
 env.server_ps_cmd = "ps -ef|grep java|grep %s|grep -v grep|awk '{print $2}'" % env.server_name
 
-
-
 @hosts(env.host_dev) #指定远程服务器地址,用户名为env.user的值
 def dev():
-    pull()
+    execute(pull)
+    execute(build)
+    execute(release)
+    execute(start)
+    execute(check)
 
 #从github拉取项目
 def pull():
@@ -50,7 +51,7 @@ def release():
 
 def start():
     if not exists(env.server_home):
-        sudo('mkdir -p %s' % env.server_home)
+        ('mkdir -p %s' % env.server_home)
         sudo('chown -R %s %s' %(env.user,env.server_home))
     with cd(env.server_home):
         #修改时间顺序排列,查找服务名列表,取出最后一个修改的文件
@@ -80,15 +81,15 @@ def stop():
     if pid:
         run('kill -9 %s' % pid)#如果进程正在运行就杀死进程
 
+@hosts(env.host_dev)
 def check():
-    ok = ''
     times = 1
     with settings(warn_only = True):
-        while times < env.status_check_times:
-            ok = run(env.app_status_cmd)
-            if ok == 'ok':
+        while times < 10:
+            res = run(env.app_status_cmd)#判断是否能连接端口,循环判断
+            if not res.failed:
                 return True
             times = times + 1
             print('status != ok. wait for %s seconds to check again ' % str(env.status_check_interval))
-            time.sleep(env.status_check_interval)
+            time.sleep(5)
     abort('check status failed after %s retires!' % str(times))
