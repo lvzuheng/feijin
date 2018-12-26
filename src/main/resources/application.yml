@@ -3,3 +3,6 @@ server:
   port: 9030
   servlet:
     context-path: /feijin
+spring:
+  aop:
+    proxy-target-class : true
