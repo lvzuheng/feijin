@@ -10,8 +10,7 @@ public class DataServer {
 
 
     public static void main(String[] args) {
-//        SpringApplication.run(DataServer.class, args);
-        CheckUtils.match2();
+        SpringApplication.run(DataServer.class, args);
 //        TimeUtils timeUtils = new TimeUtils();
 //        timeUtils.checkTime(null);
     }
